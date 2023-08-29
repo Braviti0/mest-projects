@@ -74,6 +74,7 @@ contract JingoElects {
 
     function registerVoter(address voter) public onlyModerator() {
         require(registeredVoters[voter] == false, "Voter already registered");
+        require(votingStarted == false, "Voting has already started");
         registeredVoters[voter] = true;
         totalRegisteredVoters++;
     }
@@ -92,6 +93,7 @@ contract JingoElects {
 
     function excludeVoter(address voter) public onlyModerator() {
         require(registeredVoters[voter] == true, "Voter not registered");
+        require(votingStarted == false, "Voting has already started");
         registeredVoters[voter] = false;
         totalRegisteredVoters--;
     }
