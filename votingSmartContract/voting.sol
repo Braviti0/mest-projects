@@ -4,7 +4,7 @@ pragma solidity ^0.8.4;
 
 // You are supposed to complete this assignment by defining appropriate data types
 // And working on the code implementation for the various functions/methods in the contract
-contract Voting {
+contract JingoElects {
 
     address moderator;
     uint totalRegisteredVoters;
@@ -76,11 +76,12 @@ contract Voting {
     }
 
     function checkResults() public view returns (string memory winnerCandidate) {
+        require(totalVotes != 0, "No votes casted yet");
         uint maxVotes = 0;
         for (uint i = 0; i < nextCandidateId; i++) {
             if (VotesForCandidateId[i] > maxVotes) {
                 maxVotes = VotesForCandidateId[i];
-                require(maxVotes >= (((totalRegisteredVoters * 9)/10)), "Not enough votes to declare winner");
+                require(totalVotes >= (((totalRegisteredVoters * 9)/10)), "Not enough votes to declare winner");
                 winnerCandidate = Candidates[i];
             }
         }
