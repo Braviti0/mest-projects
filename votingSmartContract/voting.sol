@@ -6,60 +6,83 @@ pragma solidity ^0.8.4;
 // And working on the code implementation for the various functions/methods in the contract
 contract Voting {
 
-uint nextCandidateId;
-address moderator;
-uint totalCandidates;
+    address moderator;
+    uint totalRegisteredVoters;
+    uint totalVotes;
+    uint nextCandidateId;
+    mapping (address => bool) registeredVoters;
 
-// Define an Appropriate Data Type to Store Candidates
-mapping (address => bool) isCandidate;
-mapping (uint => address) candidateList;
-mapping (address => uint) candidateIds;
 
-// Define an Appropriate Data Type to Track If Voter has Already Voted
-mapping (address => bool) hasVoted;
+    constructor () {
+        moderator = msg.sender;
+    }
 
-modifier onlyModerator() {
-    require(msg.sender == moderator, "Only Moderator Can Perform This Action");
-    _;
-}
+    modifier onlyModerator {
+        require(msg.sender == moderator, "Only moderator can call this function");
+        _;
+    }
 
-// Adds New Candidate
-function addCandidate(address newCandidate) public onlyModerator() {
-    isCandidate[newCandidate] = true;
-    candidateList[nextCandidateId] = newCandidate;
-    candidateIds[newCandidate] = nextCandidateId;
-    nextCandidateId++;
-    totalCandidates++;
-}
 
-// Removes Already Added Candidate
-function removeCandidate(address Candidate) public onlyModerator() {
-    isCandidate[Candidate] = false;
-    candidateList[candidateIds[Candidate]] = address(0);
-    candidateIds[Candidate] = 0;
-    totalCandidates--;
+    // Define an Appropriate Data Type to Store Candidates
+    mapping (uint => string) Candidates;
+    mapping (uint => uint) VotesForCandidateId;
+    mapping (string => uint) CandidateIds;
 
-}
+    // Define an Appropriate Data Type to Track If Voter has Already Voted
+    mapping (address => bool) hasVoted;
 
-// Retrieves All Candidates for Viewing
-function getAllCandidates() public view {
-    for (uint i = 1; i <= totalCandidates; i++) {
-        if (candidateList[i] != address(0)) {
-            // Print Candidate Name
+    // Adds New Candidate
+    function addCandidate(string memory name) public onlyModerator() {
+        require(CandidateIds[name] == 0, "Candidate Name already exists");
+        Candidates[nextCandidateId] = name;
+        CandidateIds[name] = nextCandidateId;
+        nextCandidateId++;
+    }
+
+    // Removes Already Added Candidate
+    function removeCandidate(string memory name) public onlyModerator() {
+        require(CandidateIds[name] != 0, "Candidate does not exist");
+        uint candidateId = CandidateIds[name];
+        delete Candidates[candidateId];
+        delete CandidateIds[name];
+    }
+
+    // Retrieves All Candidates for Viewing
+    function getAllCandidates() public view returns (string[] memory) {
+        string[] memory candidateNames = new string[](nextCandidateId);
+
+        for (uint i = 0; i < nextCandidateId; i++) {
+            if (bytes(Candidates[i]).length != 0) {
+                candidateNames[i] = Candidates[i];
+            }
+        }
+        return candidateNames;
+    }
+
+    // Allows Voter to Cast a Vote for a Single Candidate
+    function castVote(string memory candidate) public {
+        require(CandidateIds[candidate] != 0, "Candidate does not exist");
+        require(registeredVoters[msg.sender] == false, "Voter has already voted");
+        uint candidateId = CandidateIds[candidate];
+        VotesForCandidateId[candidateId]++;
+        totalVotes++;
+        registeredVoters[msg.sender] = true;
+    }
+
+    function registerVoter(address voter) public onlyModerator() {
+        require(registeredVoters[voter] == false, "Voter already registered");
+        registeredVoters[voter] = true;
+        totalRegisteredVoters++;
+    }
+
+    function checkResults() public view returns (string memory winnerCandidate) {
+        uint maxVotes = 0;
+        for (uint i = 0; i < nextCandidateId; i++) {
+            if (VotesForCandidateId[i] > maxVotes) {
+                maxVotes = VotesForCandidateId[i];
+                require(maxVotes >= (((totalRegisteredVoters * 9)/10)), "Not enough votes to declare winner");
+                winnerCandidate = Candidates[i];
+            }
         }
     }
-}
-
-// Allows Voter to Cast a Vote for a Single Candidate
-function castVote() public {
-    require(isCandidate[msg.sender] == true, "You Are Not A Candidate");
-    require(hasVoted[msg.sender] == false, "You Have Already Voted");
-    hasVoted[msg.sender] = true;
-}
-
-
-constructor () {
-    nextCandidateId = 1;
-    moderator = msg.sender;
-}
 }
