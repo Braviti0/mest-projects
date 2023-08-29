@@ -11,13 +11,15 @@ contract JingoElects {
     uint totalVotes;
     uint nextCandidateId;
     mapping (address => bool) registeredVoters;
+    bool votingStarted;
 
 
     constructor () {
         moderator = msg.sender;
+        nextCandidateId = 1;
     }
 
-    modifier onlyModerator {
+    modifier onlyModerator() {
         require(msg.sender == moderator, "Only moderator can call this function");
         _;
     }
@@ -62,11 +64,12 @@ contract JingoElects {
     // Allows Voter to Cast a Vote for a Single Candidate
     function castVote(string memory candidate) public {
         require(CandidateIds[candidate] != 0, "Candidate does not exist");
-        require(registeredVoters[msg.sender] == false, "Voter has already voted");
+        require(registeredVoters[msg.sender] == true, "You are not allowed to vote since you were not registered");
+        require(hasVoted[msg.sender] == false, "Voter has already voted");
+        require(votingStarted == true, "Voting has not started yet");
         uint candidateId = CandidateIds[candidate];
         VotesForCandidateId[candidateId]++;
         totalVotes++;
-        registeredVoters[msg.sender] = true;
     }
 
     function registerVoter(address voter) public onlyModerator() {
@@ -85,5 +88,15 @@ contract JingoElects {
                 winnerCandidate = Candidates[i];
             }
         }
+    }
+
+    function excludeVoter(address voter) public onlyModerator() {
+        require(registeredVoters[voter] == true, "Voter not registered");
+        registeredVoters[voter] = false;
+        totalRegisteredVoters--;
+    }
+
+    function startVoting() public onlyModerator() {
+        votingStarted = true;
     }
 }
