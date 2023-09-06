@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts\jinGoFundMe.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> jinGoFundMe.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/38</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+&nbsp;
+contract jinGoFundMe {
+&nbsp;
+    uint public totalDonations;
+        
+    uint public totalClaimsWithdrawn;
+&nbsp;
+&nbsp;
+    // access control
+&nbsp;
+    address public moderator;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        constructor() {</span>
+        moderator = msg.sender;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    modifier onlymoderator() {</span>
+<span class="cstat-no" title="statement not covered" >        require(msg.sender == moderator)</span>;
+        _;
+    }
+&nbsp;
+&nbsp;
+    // emergency stop measures
+&nbsp;
+    bool public canWithdraw = true;
+&nbsp;
+    bool public hardlocked = false;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function haltWithdrawals() public onlymoderator {</span>
+        canWithdraw = false;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function resumeWithdrawals() public onlymoderator {</span>
+<span class="cstat-no" title="statement not covered" >        require(hardlocked == false, "Withdrawals are hardlocked. The contract has been compromised.")</span>;
+        canWithdraw = true;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function hardlock() public onlymoderator {</span>
+        hardlocked = true;
+    }
+&nbsp;
+&nbsp;
+    // request donation
+&nbsp;
+    struct donationRequest {
+        address beneficiaryAddress;
+        string beneficiaryName;
+        string donationPurpose;
+        uint amountRequested;
+    }
+&nbsp;
+&nbsp;
+&nbsp;
+    // pending requests
+    donationRequest[] pendingRequests;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function submitRequest(string memory _beneficiaryName, string memory _donationPurpose, uint _amountRequested) public  returns (uint requestId) {</span>
+<span class="cstat-no" title="statement not covered" >        donationRequest memory newRequest = donationRequest({</span>
+            beneficiaryAddress: msg.sender,
+            beneficiaryName: _beneficiaryName,
+            donationPurpose: _donationPurpose,
+            amountRequested: _amountRequested
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        pendingRequests.push(newRequest)</span>;
+<span class="cstat-no" title="statement not covered" >        return (pendingRequests.length - 1);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function viewPendingRequests() public view returns (donationRequest[] memory) {</span>
+<span class="cstat-no" title="statement not covered" >        return pendingRequests;</span>
+    }
+&nbsp;
+&nbsp;
+    // approved requests
+    donationRequest[] public approvedRequests;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function viewApprovedRequests() public view returns (donationRequest[] memory) {</span>
+<span class="cstat-no" title="statement not covered" >        return approvedRequests;</span>
+    }
+&nbsp;
+&nbsp;
+    // approve donation request
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function approveRequest(uint _requestId) public onlymoderator {</span>
+<span class="cstat-no" title="statement not covered" >        donationRequest storage request = pendingRequests[_requestId];</span>
+        beneficiaryPendingClaims[request.beneficiaryAddress] += request.amountRequested;
+<span class="cstat-no" title="statement not covered" >        approvedRequests.push(request)</span>;
+        delete pendingRequests[_requestId];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        emit approvedDonationRequest(request.beneficiaryAddress, request.amountRequested, block.timestamp);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function rejectRequest(uint _requestId) public onlymoderator {</span>
+        delete pendingRequests[_requestId];
+    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+    // make claim
+&nbsp;
+    mapping (address =&gt; uint) public beneficiaryPendingClaims;
+&nbsp;
+    mapping (address =&gt; uint) public beneficiaryWithdrawnClaims;
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function withdraw() public {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        require(canWithdraw == true, "Withdrawals are currently halted.")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        require(beneficiaryPendingClaims[msg.sender] &gt; 0, "You have no pending claims.")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        require(address(this).balance &gt;= beneficiaryPendingClaims[msg.sender], "Contract balance is insufficient.")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uint amount = beneficiaryPendingClaims[msg.sender];</span>
+&nbsp;
+        beneficiaryPendingClaims[msg.sender] = 0;
+&nbsp;
+        beneficiaryWithdrawnClaims[msg.sender] += amount;
+&nbsp;
+        totalClaimsWithdrawn += amount;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        payable(msg.sender).transfer(amount)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        emit claimed(msg.sender, amount, block.timestamp);</span>
+    }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function donate() public payable {</span>
+<span class="cstat-no" title="statement not covered" >        require(msg.value &gt; 0, "You must send some ether.")</span>;
+        totalDonations += msg.value;
+<span class="cstat-no" title="statement not covered" >        donations.push(donation({</span>
+            donorAddress: msg.sender,
+            amountDonated: msg.value,
+            timestamp: block.timestamp,
+            beneficiaryAddress: address(0)
+        }));
+<span class="cstat-no" title="statement not covered" >        emit donated(msg.sender, msg.value, block.timestamp, donations.length - 1);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function donateToRequest(uint _requestId) public payable {</span>
+<span class="cstat-no" title="statement not covered" >        require(msg.value &gt; 0, "dust donations are prohibited.")</span>;
+        totalDonations += msg.value;
+<span class="cstat-no" title="statement not covered" >        donationRequest storage request = pendingRequests[_requestId];</span>
+        request.amountRequested -= msg.value;
+        beneficiaryPendingClaims[request.beneficiaryAddress] += msg.value;
+<span class="cstat-no" title="statement not covered" >        donations.push(donation({</span>
+            donorAddress: msg.sender,
+            amountDonated: msg.value,
+            timestamp: block.timestamp,
+            beneficiaryAddress: request.beneficiaryAddress
+        }));
+<span class="cstat-no" title="statement not covered" >        emit donatedToRequest(msg.sender, request.beneficiaryAddress, msg.value, block.timestamp, donations.length - 1);</span>
+    }
+&nbsp;
+    // donation records
+&nbsp;
+    struct donation {
+        address donorAddress;
+        uint amountDonated;
+        uint timestamp;
+        address beneficiaryAddress;
+    }
+&nbsp;
+    donation[] public donations;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+    // events could be used to keep records of donations and claims as a gas optimization measure
+    // the donor list can still be accessed by querying the blockchain for the events listed here
+&nbsp;
+    // but this will require a frontend interface which is not yet implemented
+    // this may not be helpful in all use cases
+&nbsp;
+&nbsp;
+    event donated (address indexed donor, uint amount, uint timestamp, uint indexed donationId );
+&nbsp;
+    event claimed (address indexed beneficiary, uint amount, uint timestamp);
+&nbsp;
+    event approvedDonationRequest (address indexed beneficiary, uint amount, uint timestamp);
+&nbsp;
+    event donatedToRequest (address indexed donor, address indexed beneficiary, uint amount, uint timestamp, uint indexed donationId);
+&nbsp;
+&nbsp;
+&nbsp;
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 04 2023 14:52:02 GMT+0000 (Greenwich Mean Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
